@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Thaha From Unknown to Known</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f0f2f5;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+    .thaha-layout {
+      width: 100%;
+      height: 100vh;
+      background: #ffffff;
+      display: flex;
+      overflow: hidden;
+    }
+    .brand-panel {
+      flex: 1.5;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      height: 100vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .brand-panel::-webkit-scrollbar {
+      width: 6px;
+    }
+    .brand-panel::-webkit-scrollbar-track {
+      background: #1e293b;
+      border-radius: 10px;
+    }
+    .brand-panel::-webkit-scrollbar-thumb {
+      background: #1877f2;
+      border-radius: 10px;
+    }
+    .brand-panel::-webkit-scrollbar-thumb:hover {
+      background: #0d65d9;
+    }
+    .brand-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3.5rem;
+      max-width: 650px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .logo-group {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .nepali-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: #1877f2;
+      line-height: 1;
+    }
+    .english-title {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: #ffffff;
+      line-height: 1;
+    }
+    .accent-dot {
+      color: #1877f2;
+    }
+    .tagline {
+      font-size: 1.1rem;
+      color: #b0b3b8;
+      font-weight: 500;
+      margin-bottom: 3rem;
+      line-height: 1.5;
+      border-left: 4px solid #1877f2;
+      padding-left: 1.25rem;
+    }
+    .story-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .philosophy-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #e4e6eb;
+      margin-bottom: 1.5rem;
+    }
+    .philosophy-text strong {
+      color: #1877f2;
+      font-weight: 600;
+    }
+    .story-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #e4e6eb;
+      margin-top: 0;
+    }
+    .story-text strong {
+      color: #1877f2;
+      font-weight: 600;
+    }
+    .philosophy-bridge {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #b0b3b8;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .philosophy-bridge strong {
+      color: #1877f2;
+      font-weight: 600;
+    }
+    .cultural-nodes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .node {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .node-title {
+      color: #e4e6eb;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .node-desc {
+      color: #b0b3b8;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .auth-panel {
+      flex: 0.8;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    .auth-container {
+      width: 100%;
+      max-width: 340px;
+    }
+    .auth-form {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .auth-form.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .auth-form h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1b1f23;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.3px;
+    }
+    .sub-text {
+      color: #65676b;
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+    .input-group {
+      margin-bottom: 0.875rem;
+    }
+    .input-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #1b1f23;
+      margin-bottom: 0.4rem;
+    }
+    .input-group input {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #e4e6eb;
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      color: #1b1f23;
+      font-size: 0.85rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .input-group input:focus {
+      border-color: #1877f2;
+      box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+    }
+    .input-group input::placeholder {
+      color: #8a8d91;
+    }
+    .primary-btn {
+      width: 100%;
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.65rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-top: 0.5rem;
+    }
+    .primary-btn:hover {
+      background-color: #0d65d9;
+    }
+    .toggle-text {
+      text-align: center;
+      margin-top: 1.25rem;
+      font-size: 0.75rem;
+      color: #65676b;
+    }
+    .toggle-link {
+      color: #1877f2;
+      cursor: pointer;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .toggle-link:hover {
+      color: #0d65d9;
+      text-decoration: underline;
+    }
+    @media (max-width: 1200px) {
+      .brand-panel { flex: 1.2; }
+      .auth-panel { flex: 0.9; }
+      .brand-content { padding: 3rem 2rem; }
+    }
+    @media (max-width: 900px) {
+      .brand-panel { flex: 1; }
+      .auth-panel { flex: 0.8; }
+      .brand-content { padding: 2rem 1.5rem; }
+      .nepali-title { font-size: 2.5rem; }
+      .english-title { font-size: 2rem; }
+      .tagline { font-size: 0.9rem; }
+      .story-card { padding: 1.25rem; }
+      .auth-container { max-width: 300px; }
+    }
+    @media (max-width: 700px) {
+      .brand-panel { flex: 0.9; }
+      .auth-panel { flex: 0.7; }
+      .brand-content { padding: 1.5rem 1rem; }
+      .nepali-title { font-size: 2rem; }
+      .english-title { font-size: 1.5rem; }
+      .tagline { font-size: 0.75rem; }
+      .philosophy-text,
+      .story-text,
+      .philosophy-bridge { font-size: 0.8rem; }
+      .node-title { font-size: 0.8rem; }
+      .node-desc { font-size: 0.7rem; }
+      .auth-container { max-width: 260px; }
+      .auth-form h3 { font-size: 1.2rem; }
+      .input-group input { padding: 0.5rem 0.7rem; font-size: 0.75rem; }
+      .primary-btn { padding: 0.5rem; font-size: 0.75rem; }
+      .node { padding: 0.75rem 1rem; }
+    }
+    @media (max-width: 550px) {
+      .brand-panel { flex: 0.8; }
+      .auth-panel { flex: 0.6; }
+      .brand-content { padding: 1rem 0.8rem; }
+      .nepali-title { font-size: 1.5rem; }
+      .english-title { font-size: 1.2rem; }
+      .logo-group { gap: 0.5rem; }
+      .tagline { font-size: 0.65rem; }
+      .philosophy-text,
+      .story-text,
+      .philosophy-bridge { font-size: 0.7rem; }
+      .auth-container { max-width: 220px; }
+      .node { padding: 0.5rem 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="thaha-layout">
+  <div class="brand-panel">
+    <div class="brand-content">
+      <div class="logo-group">
+        <h1 class="nepali-title">थाहा</h1>
+        <h2 class="english-title">Thaha<span class="accent-dot">.</span></h2>
+      </div>
+      <p class="tagline">From public stone walls to real-time digital streams.</p>
+      <div class="story-card">
+        <div class="philosophy-text">
+          Decades before the internet connected people instantly, a message was
+          already traveling across the hills of Nepal. In the 1970s,
+          philosopher <strong>Rupchandra Bista</strong> shared a simple but powerful
+          idea by writing one word across public walls and stones:
+          <br><br>
+          <strong>थाहा (To Know)</strong>
+        </div>
+        <p class="story-text">
+          More than just a word, it represented a belief that awareness should
+          reach everyone breaking the barrier between the unknown and the known.
+          A message created for communities then continues today through
+          technology, communication, and human connection.
+        </p>
+      </div>
+      <div class="cultural-nodes">
+        <div class="node">
+          <span class="node-title">Hulak (हुलाक)</span>
+          <span class="node-desc">The traditional messenger system of Nepal, reborn as instant private communications.</span>
+        </div>
+        <div class="node">
+          <span class="node-title">Chautari (चौतारी)</span>
+          <span class="node-desc">The traditional resting tree for public dialogue, reimagined as your digital room.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="auth-panel">
+    <div class="auth-container">
+      <form id="login-form" class="auth-form active" onsubmit="event.preventDefault();">
+        <h3>Sign in to Thahहा</h3>
+        <p class="sub-text">Enter your identity to step into the awareness.</p>
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="login-email" placeholder="name@example.com" required>
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="primary-btn">Step into the Know</button>
+        <p class="toggle-text">
+          New to Thaha? <span class="toggle-link" onclick="toggleAuth()">Create account</span>
+        </p>
+      </form>
+      <form id="register-form" class="auth-form" onsubmit="event.preventDefault();">
+        <h3>Join Thahहा</h3>
+        <p class="sub-text">Establish your presence. Move from unknown to known.</p>
+        <div class="input-group">
+          <label>Username</label>
+          <input type="text" id="reg-name" placeholder="How should we call you?" required>
+        </div>
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="reg-email" placeholder="name@example.com" required>
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="reg-password" placeholder="Create a strong Password" required>
+        </div>
+        <button type="submit" class="primary-btn">Get in the Know</button>
+        <p class="toggle-text">
+          Already a seeker? <span class="toggle-link" onclick="toggleAuth()">Sign in</span>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  function toggleAuth(){
+    const login = document.getElementById("login-form");
+    const register = document.getElementById("register-form");
+    login.classList.toggle("active");
+    register.classList.toggle("active");
+  }
+  document.getElementById("login-form").addEventListener("submit", async function(e){
+    e.preventDefault();
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+    try{
+      const response = await fetch("/api/auth/login", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({email:email, password:password})
+      });
+      const result = await response.text();
+      if(response.ok){
+        sessionStorage.setItem("token", result);
+        window.location.href = "chat.html";
+      }
+      else{
+        alert(result);
+      }
+    }
+    catch(error){
+      console.log(error);
+      alert("Server error");
+    }
+  });
+  document.getElementById("register-form").addEventListener("submit", async function(e){
+    e.preventDefault();
+    const username = document.getElementById("reg-name").value;
+    const email = document.getElementById("reg-email").value;
+    const password = document.getElementById("reg-password").value;
+    try{
+      const response = await fetch("/api/auth/register", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({username:username, email:email, password:password})
+      });
+      const result = await response.text();
+      alert(result);
+      if(response.ok){
+        toggleAuth();
+      }
+    }
+    catch(error){
+      console.log(error);
+      alert("Registration error");
+    }
+  });
+  window.onload = function(){
+    const token = sessionStorage.getItem("token");
+    if(token){
+      window.location.href = "chat.html";
+    }
+  };
+</script>
+</body>
+</html>
+```
