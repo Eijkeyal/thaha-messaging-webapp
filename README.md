@@ -7,7 +7,7 @@ Inspired by the meaning of **थाहा (Thaha)** — *"to know"* — this pro
 
 ---
 
-## 📖 The Story Behind Thha
+## 📖 The Story Behind Thaha
 
 Before the internet, servers, and fiber-optic networks, communication was carried by people.
 
