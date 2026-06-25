@@ -1,6 +1,5 @@
 # Thha — Real-Time Messaging Web Application
-
-> From Unknown to Known.
+From Unknown to Known.
 
 Thha is a modern real-time messaging platform built to explore how ideas, conversations, and information travel instantly through technology.
 
@@ -61,10 +60,7 @@ Thha brings that idea into software:
 Future vision:
 
 When a recipient opens a message, the read status represents the philosophy of Thha:
-
-> The receiver now knows.
-
----
+The receiver now knows.
 
 ---
 
@@ -92,5 +88,3 @@ When a recipient opens a message, the read status represents the philosophy of T
 - WebSocket Client
 
 ---
-
-# 📂 Project Structure
