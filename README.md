@@ -1,4 +1,4 @@
-# Thha — Real-Time Messaging Web Application
+# Thaha - Real-Time Messaging Web Application
 From Unknown to Known.
 
 Thha is a modern real-time messaging platform built to explore how ideas, conversations, and information travel instantly through technology.
