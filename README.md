@@ -3,7 +3,7 @@ From Unknown to Known.
 
 Thha is a modern real-time messaging platform built to explore how ideas, conversations, and information travel instantly through technology.
 
-Inspired by the meaning of **थाहा (Thha)** — *"to know"* — this project represents the transformation from traditional human communication methods into modern digital communication systems.
+Inspired by the meaning of **थाहा (Thaha)** — *"to know"* — this project represents the transformation from traditional human communication methods into modern digital communication systems.
 
 ---
 
